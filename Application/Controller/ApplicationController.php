@@ -2,8 +2,8 @@
 
 namespace Application\Controller;
 
-use Application\Helper\Auth;
-use Application\Helper\MensagemSessao;
+use Application\Model\Auth;
+use Application\Model\MensagemSessao;
 
 abstract class ApplicationController {
 

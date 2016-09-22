@@ -2,7 +2,7 @@
 
 namespace Application\Controller;
 
-use Application\Helper\Auth;
+use Application\Model\Auth;
 use Application\Model\Usuario;
 
 class LoginController extends ApplicationController {

@@ -1,9 +1,8 @@
 <?php
 
-namespace Application\Helper;
+namespace Application\Model;
 
 use Application\Model\DAO\UsuarioDAO;
-use Application\Model\Usuario;
 
 class Auth {
 
