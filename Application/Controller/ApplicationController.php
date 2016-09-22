@@ -40,12 +40,12 @@ abstract class ApplicationController {
 
         return $form;
     }
-    
-    public function hasIndex($index){
+
+    public function hasIndex($index) {
         return isset($_GET[$index]);
     }
-    
-    public function getIndex($index){
+
+    public function getIndex($index) {
         return addslashes($_GET[$index]);
     }
 
@@ -55,12 +55,12 @@ abstract class ApplicationController {
         if (!$auth->isLogado()) {
             $this->redirect("login/");
         }
-        
+
         return true;
     }
 
     public function redirect($destino) {
-        header("location: /" .VIEW_PATH.$destino);
+        header("location: /" . VIEW_PATH . $destino);
     }
 
     public function addMensagemErro($mensagem) {
@@ -74,15 +74,15 @@ abstract class ApplicationController {
     public function addMensagemSucesso($mensagem) {
         array_push($this->mensagensSucesso, $mensagem);
     }
-    
+
     public function addMensagemSessaoErro($mensagem) {
         $this->mensagemSessao->addMensagemErro($mensagem);
     }
-    
+
     public function addMensagemSessaoInfo($mensagem) {
         $this->mensagemSessao->addMensagemInfo($mensagem);
     }
-    
+
     public function addMensagemSessaoSucesso($mensagem) {
         $this->mensagemSessao->addMensagemSucesso($mensagem);
     }
@@ -109,6 +109,14 @@ abstract class ApplicationController {
 
     public function hasMensagensSucesso() {
         return count($this->mensagensSucesso);
+    }
+    
+    public function displayHeader(){
+        include LAYOUT_PATH."_header.php";
+    }
+    
+    public function displayFooter(){
+        include LAYOUT_PATH."_footer.php";
     }
 
 }

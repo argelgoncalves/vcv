@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT']."/vcv/Application/Config/Config.php";
+require_once $_SERVER['DOCUMENT_ROOT']."vcv/Application/Config/Config.php";
 new Config();
 
 use Application\Controller\DashboardController;
@@ -7,7 +7,7 @@ use Application\Controller\DashboardController;
 $applicationController = new DashboardController();
 $applicationController->indexAction();
 
-include LAYOUT_PATH."_header.php";
+$applicationController->displayHeader();
 
 ?>
 
@@ -89,5 +89,5 @@ include LAYOUT_PATH."_header.php";
                     </div>
                 </div>
 
-<?php include '../layout/_footer.php';?>
+<?php $applicationController->displayFooter(); ?>
 

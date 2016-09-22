@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT']."/vcv/Application/Config/Config.php";
+require_once $_SERVER['DOCUMENT_ROOT']."vcv/Application/Config/Config.php";
 new Config();
 
 use Application\Controller\ClienteController;
@@ -8,7 +8,7 @@ $applicationController = new ClienteController();
 $applicationController->cadastrarAction();
 $cliente = $applicationController->cliente;
 
-include LAYOUT_PATH."_header.php";
+$applicationController->displayHeader();
 
 ?>
 <div id="page-wrapper">
@@ -121,6 +121,6 @@ include LAYOUT_PATH."_header.php";
     <!-- /#page-wrapper -->
 
 
-    <?php include '../layout/_footer.php'; ?>
+<?php $applicationController->displayFooter(); ?>
 
 

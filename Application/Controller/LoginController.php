@@ -11,20 +11,19 @@ class LoginController extends ApplicationController {
         parent::__construct();
     }
 
-
     public function indexAction() {
 
         $auth = new Auth();
-        
-        if($auth->isLogado()){
+
+        if ($auth->isLogado()) {
             $this->redirect("dashboard/");
         }
-        
+
         if ($this->isPost()) {
             $usuario = $this->getUsuarioFromForm();
 
             if ($this->validarForm($usuario)) {
-                
+
                 if ($auth->isValidLogin($usuario)) {
                     $this->redirect("dashboard/");
                 } else {
