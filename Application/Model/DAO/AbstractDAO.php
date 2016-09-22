@@ -72,7 +72,8 @@ abstract class AbstractDAO{
             $result = mysql_query($sql);
 
             if ($result) {
-                $count = mysql_fetch_array($result)['total'];
+                $count = mysql_fetch_array($result);
+                $count = $count['total'];
             }
         }
         

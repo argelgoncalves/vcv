@@ -19,7 +19,7 @@ class MensagemSessao {
             $this->mensagens = $_SESSION[$this->nomeSessao];
         }else{
             $this->mensagens = array(
-                $thjs->sucesso => array(),
+                $this->sucesso => array(),
                 $this->erro => array(),
                 $this->info => array()
             );

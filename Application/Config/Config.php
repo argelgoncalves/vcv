@@ -7,7 +7,7 @@ class Config {
         session_start();
         
         define("AMBIENTE", "DEV");
-        define("PROJECT_PATH", $_SERVER['DOCUMENT_ROOT']."vcv/");
+        define("PROJECT_PATH", $_SERVER['DOCUMENT_ROOT']."/vcv/");
         define("APPLICATION_PATH", PROJECT_PATH."Application/");
         define("LAYOUT_PATH", PROJECT_PATH."layout/");
         define("VIEW_PATH", "vcv/");
