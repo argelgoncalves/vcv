@@ -27,7 +27,7 @@ class Config {
         if(AMBIENTE == "DEV"){
             ini_set("display_errors", 1); 
         }else{
-            ini_set("display_errors", 1); 
+            ini_set("display_errors", 0); 
         }
         
         spl_autoload_extensions(".php");
