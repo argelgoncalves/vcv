@@ -2,6 +2,10 @@
 
 namespace Application\Helper;
 
+/**
+ * Contém funções para validar dados
+ * Todas as funções são estáticas
+ */
 class Validacao {
 
     public static function validarCPF($cpf = null) {

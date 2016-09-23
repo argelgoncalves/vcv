@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Define as constantes e configurações para a aplicação
+ * Atalhos para diretórios, dados de acesso ao banco de dados,
+ * realiza auto_load para poder utilizar namespaces
+ */
 class Config {
     
     public function __construct(){
@@ -9,8 +14,10 @@ class Config {
         define("AMBIENTE", "DEV");
         define("PROJECT_PATH", $_SERVER['DOCUMENT_ROOT']."vcv/");
         define("APPLICATION_PATH", PROJECT_PATH."Application/");
-        define("LAYOUT_PATH", PROJECT_PATH."layout/");
-        define("VIEW_PATH", "vcv/");
+        define("TEMPLATE_PATH", APPLICATION_PATH."View/");
+        define("LAYOUT_PATH", TEMPLATE_PATH."layout/");
+        define("PAGE_URL", "http://localhost/vcv/portal/");
+        define("RESOURCE_URL", PAGE_URL."res/");
 
         define("DATABASE_NAME", "web2");
         define("DATABASE_USER", "root");
@@ -18,6 +25,8 @@ class Config {
         define("DATABASE_HOST", "localhost");
 
         if(AMBIENTE == "DEV"){
+            ini_set("display_errors", 1); 
+        }else{
             ini_set("display_errors", 1); 
         }
         

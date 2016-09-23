@@ -5,7 +5,7 @@ namespace Application\Model\DAO;
 use Application\Helper\ConexaoBD;
 
 /**
- * Classe responsável pela manipulação de dados do banco
+ * Manipula os dados do banco de dados
  * Tem as funções para manipulação de um modo geral, sendo necessária 
  * implementar as funções de insert e update 
  */

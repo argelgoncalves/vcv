@@ -5,7 +5,7 @@ namespace Application\Controller;
 use Application\Model\Usuario;
 use Application\Model\DAO\UsuarioDAO;
 
-class UsuarioController {
+class UsuarioController extends ApplicationController{
     
     public function __construct() {
         parent::__construct();
@@ -28,7 +28,8 @@ class UsuarioController {
     }
 
     public function indexAction() {
-        
+        $usuarioDAO = new UsuarioDAO();
+        $this->usuarios = $usuarioDAO->selectAll();
     }
 
     public function alterarAction() {

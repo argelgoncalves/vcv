@@ -72,7 +72,7 @@ class UsuarioDAO extends AbstractDAO {
             array_push($usuarios, $usuario);
         }
 
-        return $usuario;
+        return $usuarios;
     }
 
     public function exists($usuario) {

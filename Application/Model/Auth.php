@@ -4,6 +4,9 @@ namespace Application\Model;
 
 use Application\Model\DAO\UsuarioDAO;
 
+/**
+ * Gerencia a autenticação do sistema, trabalhando com sessao
+ */
 class Auth {
 
     private $nomeSessao = "auth";

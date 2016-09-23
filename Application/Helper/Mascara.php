@@ -2,6 +2,10 @@
 
 namespace Application\Helper;
 
+/**
+ * Contém funções para criar e remover máscaras
+ * Todas as funções são estáticas
+ */
 class Mascara {
     
     public static function removerMascaraCPF($cpf){

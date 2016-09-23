@@ -9,12 +9,7 @@ class Usuario {
     private $senha;
 
     public function setId($_id) {
-
-        if (is_int($id)) {
-            $this->id = $_id;
-        } else {
-            $this->id = 0;
-        }
+        $this->id = $_id;
     }
 
     public function setNome($_nome) {

@@ -5,7 +5,7 @@ namespace Application\Controller;
 use Application\Model\Pacote;
 use Application\Model\DAO\PacoteDAO;
 
-class PacoteController {
+class PacoteController extends PacoteController{
     
     public function __construct() {
         parent::__construct();

@@ -5,7 +5,7 @@ new Config();
 
 use Application\Controller\ClienteController;
 
-$ApplicationController = new ClienteController();
-$ApplicationController->deletarAction();
+$applicationController = new ClienteController();
+$applicationController->deletarAction();
 
 ?>

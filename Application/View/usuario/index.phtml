@@ -1,0 +1,86 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Usuários</h1>
+        </div>
+        </div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+
+            <?php if ($this->hasMensagensErro()): ?>
+                <?php foreach ($this->getMensagensErro() as $message): ?>
+                    <div class="alert alert-danger"><?= $message ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if ($this->hasMensagensInfo()): ?>
+                <?php foreach ($this->getMensagensInfo() as $message): ?>
+                    <div class="alert alert-info"><?= $message ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if ($this->hasMensagensSucesso()): ?>
+                <?php foreach ($this->getMensagensSucesso() as $message): ?>
+                    <div class="alert alert-success"><?= $message ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+
+            <a href ="<?= $this->generateURL('usuario/cadastrar.php') ?>" class ="btn btn-success">Novo Usuário</a>
+
+            <div class="clearfix"/><br /></div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-users fa-fw"></i>&nbsp;Usuarios
+
+
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class='center'>#</th>
+                                <th class='center'>Nome</th>
+                                <th class="center">Ação</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php if (count($this->usuarios)): ?>
+                                <?php foreach ($this->usuarios as $usuario): ?>
+                                    <tr>
+                                        <td class='center'><?= $usuario->getId() ?></td>
+                                        <td><?= $usuario->getNome() ?></td>
+                                        <td>
+                                            <a href ="<?= $this->generateURL('usuario/alterar.php?id=' . $usuario->getId()) ?>" class ="btn btn-info">
+                                                <i class ="fa fa-edit"></i>&nbsp;Editar
+                                            </a>
+
+                                            <a href ="<?= $this->generateURL('usuario/deletar.php?id=' . $usuario->getId()) ?>" class ="btn btn-danger">
+                                                <i class ="fa fa-trash"></i>&nbsp;Apagar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="3">Sem clientes cadastrados</td>
+                                </tr>
+                            <?php endif; ?>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->

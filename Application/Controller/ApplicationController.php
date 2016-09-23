@@ -39,11 +39,7 @@ abstract class ApplicationController {
      *  fornecendo a uma classe vários tipos de ações.
      *  Os métodos de sobrecarga são invocados ao interagir com 
      *  propriedades ou métodos que não foram declarados ou não são visíveis no 
-     *  escopo corrente. O resto desta seção usará os termos 
-     * "propriedades inacessíveis" e "métodos inacessíveis" para referir-se a 
-     * esta combinação de declaração e visibilidade. 
-     * 
-     * 
+     *  escopo corrente. 
      * @param string $key propriedade a ser lida
      * @return string
      */
@@ -59,11 +55,7 @@ abstract class ApplicationController {
      *  fornecendo a uma classe vários tipos de ações.
      *  Os métodos de sobrecarga são invocados ao interagir com 
      *  propriedades ou métodos que não foram declarados ou não são visíveis no 
-     *  escopo corrente. O resto desta seção usará os termos 
-     * "propriedades inacessíveis" e "métodos inacessíveis" para referir-se a 
-     *  esta combinação de declaração e visibilidade. 
-     * 
-     * 
+     *  escopo corrente. 
      * @param string $key Propriedade a ser lida
      * @param string $value Valor da propriedade
      */
@@ -128,7 +120,7 @@ abstract class ApplicationController {
      * @param string $destino caminho do arquivo a ser redirecionado   
      */
     public function redirect($destino) {
-        header("location: /" . VIEW_PATH . $destino);
+        header("location: " . PAGE_URL . $destino);
     }
 
     /**
@@ -244,7 +236,7 @@ abstract class ApplicationController {
      * aplicação
      */
     public function displayHeader() {
-        include LAYOUT_PATH . "_header.php";
+        include LAYOUT_PATH . "_header.phtml";
     }
 
     /**
@@ -252,7 +244,32 @@ abstract class ApplicationController {
      * aplicação
      */
     public function displayFooter() {
-        include LAYOUT_PATH . "_footer.php";
+        include LAYOUT_PATH . "_footer.phtml";
+    }
+
+    /**
+     * Inclui e exibe o arquivo de template da página
+     */
+    public function displayContent($template) {
+        include TEMPLATE_PATH . $template . ".phtml";
+    }
+
+    /**
+     * Retorna o caminho absoluto da aplicação no servidor
+     * @param string $destino Caminho da página
+     * @return string
+     */
+    public function generateURL($destino) {
+        return PAGE_URL . $destino;
+    }
+
+    /**
+     * Retorna o caminho absoluto do diretório de resources da aplicação
+     * @param string $destino Caminho da página
+     * @return string
+     */
+    public function generateURLResouce($destino) {
+        return RESOURCE_URL . $destino;
     }
 
 }

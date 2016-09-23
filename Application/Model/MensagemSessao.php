@@ -2,6 +2,11 @@
 
 namespace Application\Model;
 
+/**
+ * Gerencia mensagens de sessão, que são mensagens passadas de 
+ * uma página para outra, evitando assim ter que trabalhar com indices no
+ * URL para exibir uma mensagem em um redirecionamento
+ */
 class MensagemSessao {
 
     private $nomeSessao = "messages";

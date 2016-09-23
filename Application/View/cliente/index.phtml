@@ -1,0 +1,94 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Clientes</h1>
+        </div>
+        </div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+
+            <?php if ($this->hasMensagensErro()): ?>
+                <?php foreach ($this->getMensagensErro() as $message): ?>
+                    <div class="alert alert-danger"><?= $message ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if ($this->hasMensagensInfo()): ?>
+                <?php foreach ($this->getMensagensInfo() as $message): ?>
+                    <div class="alert alert-info"><?= $message ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php if ($this->hasMensagensSucesso()): ?>
+                <?php foreach ($this->getMensagensSucesso() as $message): ?>
+                    <div class="alert alert-success"><?= $message ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+
+            <a href ="<?= $this->generateURL('cliente/cadastrar.php') ?>" class ="btn btn-success">Novo Cliente</a>
+
+            <div class="clearfix"/><br /></div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-users fa-fw"></i>&nbsp;Clientes
+
+
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class='center'>#</th>
+                                <th class='center'>Nome</th>
+                                <th class='center'>CPF</th>
+                                <th class='center'>Nascimento</th>
+                                <th class='center'>Sexo</th>
+                                <th class="center">Email</th>
+                                <th class="center">Ação</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php if (count($this->clientes)): ?>
+                                <?php foreach ($this->clientes as $cliente): ?>
+                                    <tr>
+                                        <td class='center'><?= $cliente->getId() ?></td>
+                                        <td><?= $cliente->getNome() ?></td>
+                                        <td><?= $cliente->getCpf() ?></td>
+                                        <td class='center'><?= $cliente->getNascimento() ?></td>
+                                        <td class='center'><?= $cliente->getSexo() ?></td>
+                                        <td class="center"><?= $cliente->getEmail() ?></td>
+                                        <td>
+                                            <a href ="<?= $this->generateURL('cliente/alterar.php?id=' . $cliente->getId()) ?>" class ="btn btn-info">
+                                                <i class ="fa fa-edit"></i>&nbsp;Editar
+                                            </a>
+
+                                            <a href ="<?= $this->generateURL('cliente/deletar.php?id=' . $cliente->getId()) ?>" class ="btn btn-danger">
+                                                <i class ="fa fa-trash"></i>&nbsp;Apagar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="7">Sem clientes cadastrados</td>
+                                </tr>
+                            <?php endif; ?>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
