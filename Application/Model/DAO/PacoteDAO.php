@@ -81,5 +81,9 @@ class PacoteDAO extends AbstractDAO {
 
         return $pacotes;
     }
+    
+    public function exists($pacote) {
+        return parent::getCount(self::NOME . " LIKE '" . $pacote->getNome(). "'") > 0;
+    }
 
 }

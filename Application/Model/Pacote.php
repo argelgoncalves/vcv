@@ -11,12 +11,7 @@ class Pacote {
     private $valor;
 
     public function setId($_id) {
-
-        if (is_int($id)) {
-            $this->id = $_id;
-        } else {
-            $this->id = 0;
-        }
+        $this->id = $_id;
     }
 
     public function setNome($_nome) {
@@ -32,12 +27,7 @@ class Pacote {
     }
 
     public function setValor($_valor) {
-
-        if (is_double($_valor)) {
-            $this->valor = $_valor;
-        } else {
-            $this->valor = 0.0;
-        }
+        $this->valor = $_valor;
     }
 
     public function getId() {

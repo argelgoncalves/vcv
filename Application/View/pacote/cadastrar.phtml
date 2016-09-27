@@ -1,7 +1,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Adicionar Cliente</h1>
+            <h1 class="page-header">Adicionar Pacote</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -13,12 +13,12 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Formulário de Cliente
+                    Formulário de Pacote
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
-                            <form class='form-horizontal' method="POST" action="<?= $this->generateURL('cliente/cadastrar.php') ?>">
+                            <form class='form-horizontal' enctype="multipart/form-data" method="POST" action="<?= $this->generateURL('pacote/cadastrar.php') ?>">
 
                                 <?php if ($this->hasMensagensErro()): ?>
                                     <?php foreach ($this->getMensagensErro() as $message): ?>
@@ -39,54 +39,32 @@
                                 <?php endif; ?>
 
                                 <div class="form-group">
-                                    <label for='nome' class="col-md-3 control-label">Nome Completo</label>
+                                    <label for='nome' class="col-md-3 control-label">Nome</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="nome" name="nome" type="text" value="<?= $this->cliente->getNome() ?>">
+                                        <input class="form-control" id="nome" name="nome" type="text" value="<?= $this->pacote->getNome() ?>">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label for='cpf' class="col-md-3 control-label">CPF</label>
+                                    <label for='descricao' class="col-md-3 control-label">Descricao</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="cpf" name="cpf" type="text" value="<?= $this->cliente->getCpf() ?>">
+                                        <textarea class="form-control" id="descricao" name="descricao" type="text"><?= $this->pacote->getDescricao()?></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label for='nascimento' class="col-md-3 control-label">Data de Nascimento</label>
+                                    <label for='valor' class="col-md-3 control-label">Valor</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="nascimento" name="nascimento" type="text" value="<?= $this->cliente->getNascimento() ?>">
+                                        <input class="form-control" id="valor" name="valor" type="text" value="<?= $this->pacote->getValor() ?>">
                                     </div>
                                 </div>
-
+                                        
                                 <div class="form-group">
-                                    <label for='sexo' class="col-md-3 control-label">Sexo</label>
+                                    <label for="foto" class="col-md-3 control-label">Foto</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="sexo" id="masculino" value="M" <?= $this->cliente->getSexo() == 'M' || empty($this->cliente->getSexo()) ? "checked" : "" ?>>&nbsp;Masculino
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="sexo" id="feminino" value="F" <?= $this->cliente->getSexo() == 'F' ? "checked" : "" ?>>&nbsp;Feminino
-                                        </label>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group">
-
-                                    <label for='email' class="col-md-3 control-label">Email</label>
-                                    <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="email" name="email" type="text" value="<?= $this->cliente->getEmail() ?>">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label for='senha' class="col-md-3 control-label">Senha</label>
-                                    <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="senha" name="senha" type="password">
+                                        <input type="file" id="foto" name="foto" accept="image/*">
                                     </div>
                                 </div>
 

@@ -18,6 +18,7 @@ class Config {
         define("LAYOUT_PATH", TEMPLATE_PATH."layout/");
         define("PAGE_URL", "http://localhost/vcv/portal/");
         define("RESOURCE_URL", PAGE_URL."res/");
+        define("IMAGES_PATH", PROJECT_PATH."portal/res/images/");
 
         define("DATABASE_NAME", "web2");
         define("DATABASE_USER", "root");

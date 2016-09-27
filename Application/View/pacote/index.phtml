@@ -1,7 +1,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Clientes</h1>
+            <h1 class="page-header">Pacotes</h1>
         </div>
         </div>
     
@@ -27,66 +27,49 @@
             <?php endif; ?>
 
 
-            <a href ="<?= $this->generateURL('cliente/cadastrar.php') ?>" class ="btn btn-success">Novo Cliente</a>
+            <a href ="<?= $this->generateURL('pacote/cadastrar.php') ?>" class ="btn btn-success">Novo Pacote</a>
+            
+        </div>
+    </div>
+    
+    <div class="clearfix"><br /><br /><br /></div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            
+            
+            <?php foreach($this->pacotes as $pacote):?>
+            
+                <div class = "col-sm-6 col-md-3 col-xs-12 panel panel-default">
+                    <div class="panel-body">
+                    
+                        <div class = "thumbnail">
+                            <a href ="<?= $this->generateURL('pacote/alterar.php?id=' . $pacote->getId()) ?>">
+                                <img class = "img-responsive img-thumbnail"
+                                    src = "<?= $this->generateURLImage($pacote->getURLFoto())?>" alt = "<?=$pacote->getNome()?>">
+                            </a>
+                         </div>
 
-            <div class="clearfix"/><br /></div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-users fa-fw"></i>&nbsp;Clientes
+                         <div class = "caption">
+                            <h3><?=$pacote->getNome()?></h3>
+                            <p>R$ <?=$pacote->getValor()?></p>
 
+                            <p>
+                                 <a href ="<?= $this->generateURL('pacote/alterar.php?id=' . $pacote->getId()) ?>" class ="btn btn-info">
+                                     <i class ="fa fa-edit"></i>&nbsp;Editar
+                                 </a>
 
+                                 <a href ="<?= $this->generateURL('pacote/deletar.php?id=' . $pacote->getId()) ?>" class ="btn btn-danger">
+                                     <i class ="fa fa-trash"></i>&nbsp;Apagar
+                                 </a>
+                            </p>
 
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th class='center'>#</th>
-                                <th class='center'>Nome</th>
-                                <th class='center'>CPF</th>
-                                <th class='center'>Nascimento</th>
-                                <th class='center'>Sexo</th>
-                                <th class="center">Email</th>
-                                <th class="center">Ação</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php if (count($this->clientes)): ?>
-                                <?php foreach ($this->clientes as $this->cliente): ?>
-                                    <tr>
-                                        <td class='center'><?= $this->cliente->getId() ?></td>
-                                        <td><?= $this->cliente->getNome() ?></td>
-                                        <td><?= $this->cliente->getCpf() ?></td>
-                                        <td class='center'><?= $this->cliente->getNascimento() ?></td>
-                                        <td class='center'><?= $this->cliente->getSexo() ?></td>
-                                        <td class="center"><?= $this->cliente->getEmail() ?></td>
-                                        <td>
-                                            <a href ="<?= $this->generateURL('cliente/alterar.php?id=' . $this->cliente->getId()) ?>" class ="btn btn-info">
-                                                <i class ="fa fa-edit"></i>&nbsp;Editar
-                                            </a>
-
-                                            <a href ="<?= $this->generateURL('cliente/deletar.php?id=' . $this->cliente->getId()) ?>" class ="btn btn-danger">
-                                                <i class ="fa fa-trash"></i>&nbsp;Apagar
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="7">Sem clientes cadastrados</td>
-                                </tr>
-                            <?php endif; ?>
-
-                        </tbody>
-                    </table>
+                         </div>
+                    </div>
                 </div>
-
-            </div>
-            <!-- /.panel-body -->
+            
+            <?php endforeach;?>
+           
         </div>
     </div>
     <!-- /.row -->

@@ -272,4 +272,28 @@ abstract class ApplicationController {
         return RESOURCE_URL . $destino;
     }
 
+    /**
+     * Retorna o caminho absoluto do diretório de resources da aplicação
+     * @param string $destino Caminho da página
+     * @return string
+     */
+    public function generateURLImage($filename) {
+        return RESOURCE_URL . "images/" . $filename;
+    }
+
+    public function isImageUploaded($name) {
+        return isset($_FILES[$name]);
+    }
+
+    public function uploadImage($inputName) {
+        date_default_timezone_set("Brazil/East");
+        $ext = strtolower(substr($_FILES[$inputName]['name'], -4));
+        $newName = md5(date("YmdHis")) . $ext;
+
+        if (move_uploaded_file($_FILES[$inputName]['tmp_name'], IMAGES_PATH . $newName)) {
+            return $newName;
+        }
+        return false;
+    }
+
 }
