@@ -15,7 +15,7 @@ class LoginController extends ApplicationController {
 
         $auth = new Auth();
 
-        if ($auth->isLogado()) {
+        if ($auth->isLogged()) {
             $this->redirect("dashboard/");
         }
 
@@ -24,7 +24,7 @@ class LoginController extends ApplicationController {
 
             if ($this->validarForm($usuario)) {
 
-                if ($auth->isValidLogin($usuario)) {
+                if ($auth->authenticate($usuario)) {
                     $this->redirect("dashboard/");
                 } else {
                     $this->addMensagemErro("Usuario ou senha incorretos!");

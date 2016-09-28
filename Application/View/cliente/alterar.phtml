@@ -18,7 +18,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
-                            <form class='form-horizontal' method="POST" action="<?= $this->generateURL('cliente/alterar.php?id=' . $this->cliente->getId()) ?>">
+                            <form id="form-cliente" class='form-horizontal' method="POST" action="<?= $this->generateURL('cliente/alterar.php?id=' . $this->cliente->getId()) ?>">
 
                                 <?php if ($this->hasMensagensErro()): ?>
                                     <?php foreach ($this->getMensagensErro() as $message): ?>
@@ -38,11 +38,11 @@
                                     <?php endforeach; ?>
                                 <?php endif; ?>
 
-                                <div class="form-group">
-
+                                                                <div class="form-group">
                                     <label for='nome' class="col-md-3 control-label">Nome Completo</label>
                                     <div class='col-md-9 col-sm-12'>
                                         <input class="form-control" id="nome" name="nome" type="text" value="<?= $this->cliente->getNome() ?>">
+                                        <p class="help-block">Nome deve ter pelo menos 3 caracteres!</p>
                                     </div>
                                 </div>
 
@@ -50,15 +50,16 @@
 
                                     <label for='cpf' class="col-md-3 control-label">CPF</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="cpf" name="cpf" type="text" value="<?= $this->cliente->getCpf() ?>">
-                                    </div>
+                                        <input class="form-control" readonly id="cpf" name="cpf" type="text" value="<?= $this->cliente->getCpf() ?>">
+                                        </div>
                                 </div>
 
                                 <div class="form-group">
 
                                     <label for='nascimento' class="col-md-3 control-label">Data de Nascimento</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="nascimento" name="nascimento" type="date" value="<?= $this->cliente->getNascimento() ?>">
+                                        <input class="form-control" id="nascimento" name="nascimento" type="text" value="<?= $this->cliente->getNascimento() ?>">
+                                        <p class="help-block" >Data de nascimento deve ser válida no formato DD/MM/AAAA!</p>
                                     </div>
                                 </div>
 
@@ -66,7 +67,7 @@
                                     <label for='sexo' class="col-md-3 control-label">Sexo</label>
                                     <div class='col-md-9 col-sm-12'>
                                         <label class="radio-inline">
-                                            <input type="radio" name="sexo" id="masculino" value="M" <?= $this->cliente->getSexo() == 'M' ? "checked" : "" ?>>&nbsp;Masculino
+                                            <input type="radio" name="sexo" id="masculino" value="M" <?= $this->cliente->getSexo() == 'M' || empty($this->cliente->getSexo()) ? "checked" : "" ?>>&nbsp;Masculino
                                         </label>
                                         <label class="radio-inline">
                                             <input type="radio" name="sexo" id="feminino" value="F" <?= $this->cliente->getSexo() == 'F' ? "checked" : "" ?>>&nbsp;Feminino
@@ -79,7 +80,7 @@
 
                                     <label for='email' class="col-md-3 control-label">Email</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="email" name="email" type="email" value="<?= $this->cliente->getEmail() ?>">
+                                        <input class="form-control" readonly id="email" name="email" type="text" value="<?= $this->cliente->getEmail() ?>">
                                     </div>
                                 </div>
 
@@ -88,6 +89,7 @@
                                     <label for='senha' class="col-md-3 control-label">Senha</label>
                                     <div class='col-md-9 col-sm-12'>
                                         <input class="form-control" id="senha" name="senha" type="password">
+                                        <p class="help-block" >Senha deve ter pelo menos 6 caracteres!</p>
                                     </div>
                                 </div>
 

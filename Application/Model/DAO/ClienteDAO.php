@@ -40,8 +40,8 @@ class ClienteDAO extends AbstractDAO {
                     . "'" . $cliente->getSenha() . "'"
                     . ");";
             
-            if (mysql_query($sql)) {
-                $ultimoId = mysql_insert_id();
+            if (mysqli_query($bd->getConexao(), $sql)) {
+                $ultimoId = mysqli_insert_id($bd->getConexao());
             }
         }
 
@@ -66,7 +66,7 @@ class ClienteDAO extends AbstractDAO {
                     .self::SENHA. " = '" . $cliente->getSenha() . "'"
                     . " WHERE " .self::ID. " = " . $cliente->getID();
 
-            $status = mysql_query($sql);
+            $status = mysqli_query($bd->getConexao(), $sql);
         }
 
         $bd->desconectar();

@@ -33,11 +33,10 @@ class ClienteController extends ApplicationController {
                     $this->redirect("cliente/");
                 } else {
                     $this->addMensagemErro("Ocorreu um erro ao cadastrar");
-                    $this->parseToForm($cliente);
                 }
             }
         }
-        
+        $this->parseToForm($cliente);
         $this->cliente = $cliente;
     }
 
@@ -59,29 +58,37 @@ class ClienteController extends ApplicationController {
 
                         $cliente = $this->getClienteFromForm();
                         
-                        if($cliente->getEmail() == $clientes[0]->getEmail() &&
-                                md5($cliente->getSenha()) == $clientes[0]->getSenha()){
-                            
+                        if($cliente->getCpf() == $clientes[0]->getCpf()){
                         
-                            $this->parseToDatabase($cliente);
+                            if($cliente->getEmail() == $clientes[0]->getEmail() &&
+                                    md5($cliente->getSenha()) == $clientes[0]->getSenha()){
 
-                            if ($this->validarForm($cliente, true)) {
-                                $cliente->setId($id);
-                                $cliente->setSenha(md5($cliente->getSenha()));
-                                $clienteDAO = new ClienteDAO();
+                                $this->parseToDatabase($cliente);
 
-                                if ($clienteDAO->update($cliente)) {
-                                    $this->addMensagemSessaoSucesso("Cliente alterado com Sucesso!");
-                                    $this->redirect("cliente/");
-                                } else {
-                                    $this->addMensagemErro("Ocorreu um erro ao alterar");
-                                    $this->parseToForm($cliente);
-                                    $this->cliente = $cliente;
+                                if ($this->validarForm($cliente, true)) {
+                                    $cliente->setId($id);
+                                    $cliente->setSenha(md5($cliente->getSenha()));
+                                    $clienteDAO = new ClienteDAO();
+
+                                    if ($clienteDAO->update($cliente)) {
+                                        $this->addMensagemSessaoSucesso("Cliente alterado com Sucesso!");
+                                        $this->redirect("cliente/");
+                                    } else {
+                                        $this->addMensagemErro("Ocorreu um erro ao alterar");
+                                        $this->parseToForm($cliente);
+                                        $this->cliente = $cliente;
+                                    }
                                 }
+                            }else{
+                                $this->addMensagemErro("Email ou senha inválidos");
+                                $cliente->setEmail($clientes[0]->getEmail());
+                                $this->cliente = $cliente;
                             }
                         }else{
-                            $this->addMensagemErro("Email ou senha inválidos");
-                            $this->cliente = $clientes[0];
+                            $this->addMensagemErro("CPF não pode ser alterado");
+                            $cliente->setEmail($clientes[0]->getEmail());
+                            $cliente->setCpf($clientes[0]->getCpf());
+                            $this->cliente = $cliente;
                         }
                     } else {
                         $this->cliente = $clientes[0];
@@ -120,7 +127,7 @@ class ClienteController extends ApplicationController {
             $this->addMensagemSessaoInfo("ID Nao informado para remover Cliente!");
         }
 
-        $this->redirect("clientes/");
+        $this->redirect("cliente/");
     }
 
     private function getClienteFromForm() {

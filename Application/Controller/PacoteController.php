@@ -66,27 +66,34 @@ class PacoteController extends ApplicationController{
 
                         $auxPacote = $pacote;
                         $pacote = $this->getPacoteFromForm();
-                        $pacote->setId($auxPacote->getId());
-                        $pacote->setURLFoto($auxPacote->getURLFoto());
                         
-                        if ($this->validarForm($pacote, true)) {
-                            $pacoteDAO = new PacoteDAO();
-                            
-                            if($this->isImageUploaded("foto")){
-                                $urlImagem = $this->uploadImage("foto");
+                        if($pacote->getNome() == $pacotes[0]->getNome()){
+                            $pacote->setId($auxPacote->getId());
+                            $pacote->setURLFoto($auxPacote->getURLFoto());
 
-                                if($urlImagem){
-                                    $pacote->setURLFoto($urlImagem);
+                            if ($this->validarForm($pacote, true)) {
+                                $pacoteDAO = new PacoteDAO();
+
+                                if($this->isImageUploaded("foto")){
+                                    $urlImagem = $this->uploadImage("foto");
+
+                                    if($urlImagem){
+                                        $pacote->setURLFoto($urlImagem);
+                                    }
+                                }
+
+                                if ($pacoteDAO->update($pacote)) {
+                                    $this->addMensagemSessaoSucesso("Pacote alterado com Sucesso!");
+                                    $this->redirect("pacote/");
+                                } else {
+                                    $this->addMensagemErro("Ocorreu um erro ao alterar o pacote");
+                                    $this->pacote = $pacote;
                                 }
                             }
-
-                            if ($pacoteDAO->update($pacote)) {
-                                $this->addMensagemSessaoSucesso("Pacote alterado com Sucesso!");
-                                $this->redirect("pacote/");
-                            } else {
-                                $this->addMensagemErro("Ocorreu um erro ao alterar o pacote");
-                                $this->pacote = $pacote;
-                            }
+                        }else{
+                            $this->addMensagemErro("Não é possível alterar o nome do pacote");
+                            $pacote->setNome($pacotes[0]->getNome());
+                            $this->pacote = $pacote;
                         }
                     }
                     
@@ -136,7 +143,7 @@ class PacoteController extends ApplicationController{
 
         $pacote->setNome($form['nome']);
         $pacote->setDescricao($form['descricao']);
-        $pacote->setValor($form['valor']);
+        $pacote->setValor(str_replace("R$ ", "", $form['valor']));
         
         return $pacote;
     }

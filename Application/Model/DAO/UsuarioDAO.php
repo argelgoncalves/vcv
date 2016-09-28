@@ -30,8 +30,8 @@ class UsuarioDAO extends AbstractDAO {
                     . "'" . $usuario->getSenha() . "'"
                     . ")";
 
-            if (mysql_query($sql)) {
-                $ultimoId = mysql_insert_id();
+            if (mysqli_query($bd->getConexao(), $sql)) {
+                $ultimoId = mysqli_insert_id($bd->getConexao());
             }
         }
 
@@ -51,7 +51,7 @@ class UsuarioDAO extends AbstractDAO {
                     . self::SENHA . " = '" . $usuario->getSenha() . "'"
                     . " WHERE " . self::ID . " = " . $usuario->getID();
 
-            if (mysql_query($sql)) {
+            if (mysqli_query($bd->getConexao(), $sql)) {
                 $bd->desconectar();
                 return 1;
             }
@@ -75,8 +75,12 @@ class UsuarioDAO extends AbstractDAO {
         return $usuarios;
     }
 
+    public function authenticate($usuario) {
+        return parent::getCount(self::NOME . " LIKE '" . $usuario->getNome() . "' AND " . self::SENHA . " LIKE '" . md5($usuario->getSenha()) . "'") > 0;
+    }
+    
     public function exists($usuario) {
-        return parent::getCount(self::NOME . " LIKE '" . $usuario->getNome() . "' AND " . self::SENHA . " LIKE '" . md5($usuario->getSenha()) . "'") == 1;
+        return parent::getCount(self::NOME . " LIKE '" . $usuario->getNome()."'") > 0;
     }
 
 }

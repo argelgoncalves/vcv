@@ -9,6 +9,10 @@ class Pacote {
     private $descricao;
     private $url_foto;
     private $valor;
+    
+    public function Pacote(){
+        $this->valor = 0.0;
+    }
 
     public function setId($_id) {
         $this->id = $_id;

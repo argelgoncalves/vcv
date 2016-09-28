@@ -18,7 +18,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
-                            <form class='form-horizontal' method="POST" action="<?= $this->generateURL('usuario/alterar.php?id=' . $this->usuario->getId()) ?>">
+                            <form id="form-usuario" class='form-horizontal' method="POST" action="<?= $this->generateURL('usuario/alterar.php?id=' . $this->usuario->getId()) ?>">
 
                                 <?php if ($this->hasMensagensErro()): ?>
                                     <?php foreach ($this->getMensagensErro() as $message): ?>
@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <label for='nome' class="col-md-3 control-label">Nome de Usuário</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="nome" name="nome" type="text" value="<?= $this->usuario->getNome() ?>">
+                                        <input class="form-control" readonly id="nome" name="nome" type="text" value="<?= $this->usuario->getNome() ?>">
                                     </div>
                                 </div>
 
@@ -50,6 +50,7 @@
                                     <label for='senha' class="col-md-3 control-label">Senha</label>
                                     <div class='col-md-9 col-sm-12'>
                                         <input class="form-control" id="senha" name="senha" type="password">
+                                        <p class="help-block">Senha deve ter pelo menos 6 caracteres!</p>
                                     </div>
                                 </div>
 

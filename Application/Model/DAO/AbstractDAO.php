@@ -48,7 +48,7 @@ abstract class AbstractDAO {
 
         if ($bd) {
             $sql = "DELETE FROM " . $this->tableName . " WHERE " . $this->identifier . " = " . $id;
-            $status = mysql_query($sql);
+            $status = mysqli_query($bd->getConexao(), $sql);
         }
 
         $bd->desconectar();
@@ -85,10 +85,10 @@ abstract class AbstractDAO {
 
         if ($bd) {
             $sql = "SELECT * FROM " . $this->tableName . " WHERE " . $where;
-            $results = mysql_query($sql);
+            $results = mysqli_query($bd->getConexao(), $sql);
 
             if ($results) {
-                while ($row = mysql_fetch_array($results)) {
+                while ($row = mysqli_fetch_array($results)) {
                     array_push($array_results, $row);
                 }
             }
@@ -111,10 +111,10 @@ abstract class AbstractDAO {
 
         if ($bd) {
             $sql = "SELECT COUNT(*) as total FROM " . $this->tableName . " WHERE " . $where;
-            $result = mysql_query($sql);
+            $result = mysqli_query($bd->getConexao(), $sql);
 
             if ($result) {
-                $count = mysql_fetch_array($result);
+                $count = mysqli_fetch_array($result);
                 $count = $count['total'];
             }
         }

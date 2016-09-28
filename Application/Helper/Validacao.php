@@ -14,9 +14,9 @@ class Validacao {
             return false;
         }
 
-        $cpf = ereg_replace('[^0-9]', '', $cpf);
+        $cpf = preg_replace('/[^0-9]/i', '', $cpf);
         $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
-
+        
         if (strlen($cpf) != 11) {
             return false;
         } else if ($cpf == '00000000000' ||
@@ -67,7 +67,7 @@ class Validacao {
         $extensao = "([a-zA-Z]{2,4})$";
         $pattern = $conta . $domino . $extensao;
 
-        return ereg($pattern, $email);
+        return preg_match("/$pattern/", $email);
     }
 
 }

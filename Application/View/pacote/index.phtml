@@ -37,38 +37,41 @@
     <div class="row">
         <div class="col-lg-12">
             
-            
-            <?php foreach($this->pacotes as $pacote):?>
-            
-                <div class = "col-sm-6 col-md-3 col-xs-12 panel panel-default">
-                    <div class="panel-body">
-                    
-                        <div class = "thumbnail">
-                            <a href ="<?= $this->generateURL('pacote/alterar.php?id=' . $pacote->getId()) ?>">
-                                <img class = "img-responsive img-thumbnail"
-                                    src = "<?= $this->generateURLImage($pacote->getURLFoto())?>" alt = "<?=$pacote->getNome()?>">
-                            </a>
-                         </div>
+            <?php if(count($this->pacotes)):?>
+                <?php foreach($this->pacotes as $pacote):?>
 
-                         <div class = "caption">
-                            <h3><?=$pacote->getNome()?></h3>
-                            <p>R$ <?=$pacote->getValor()?></p>
+                    <div class = "col-sm-6 col-md-3 col-xs-12 panel panel-default">
+                        <div class="panel-body">
 
-                            <p>
-                                 <a href ="<?= $this->generateURL('pacote/alterar.php?id=' . $pacote->getId()) ?>" class ="btn btn-info">
-                                     <i class ="fa fa-edit"></i>&nbsp;Editar
-                                 </a>
+                            <div class = "thumbnail">
+                                <a href ="<?= $this->generateURL('pacote/alterar.php?id=' . $pacote->getId()) ?>">
+                                    <img class = "img-responsive img-thumbnail"
+                                        src = "<?= $this->generateURLImage($pacote->getURLFoto())?>" alt = "<?=$pacote->getNome()?>">
+                                </a>
+                             </div>
 
-                                 <a href ="<?= $this->generateURL('pacote/deletar.php?id=' . $pacote->getId()) ?>" class ="btn btn-danger">
-                                     <i class ="fa fa-trash"></i>&nbsp;Apagar
-                                 </a>
-                            </p>
+                             <div class = "caption">
+                                <h3><?=$pacote->getNome()?></h3>
+                                <p>R$ <?=number_format($pacote->getValor(), 2)?></p>
 
-                         </div>
+                                <p>
+                                     <a href ="<?= $this->generateURL('pacote/alterar.php?id=' . $pacote->getId()) ?>" class ="btn btn-info">
+                                         <i class ="fa fa-edit"></i>&nbsp;Editar
+                                     </a>
+
+                                     <a href ="<?= $this->generateURL('pacote/deletar.php?id=' . $pacote->getId()) ?>" class ="btn btn-danger delete" data="<?=$pacote->getNome()?>">
+                                         <i class ="fa fa-trash"></i>&nbsp;Apagar
+                                     </a>
+                                </p>
+
+                             </div>
+                        </div>
                     </div>
-                </div>
-            
-            <?php endforeach;?>
+
+                <?php endforeach;?>
+            <?php else:?>
+            <h3>Sem pacotes cadastrados!</h3>
+            <?php endif;?>
            
         </div>
     </div>

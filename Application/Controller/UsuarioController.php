@@ -51,21 +51,27 @@ class UsuarioController extends ApplicationController {
                 if (count($usuarios) > 0) {
                     if ($this->isPost()) {
                         $usuario = $this->getUsuarioFromForm();
-                        $usuario->setId($id);
+                        
+                        if($usuarios[0]->getNome() == $usuario->getNome()){
+                            $usuario->setId($id);
 
-                        if ($this->validarForm($usuario, true)) {
-                            $usuario->setSenha(md5($usuario->getSenha()));
-                            $usuarioDAO = new UsuarioDAO();
+                            if ($this->validarForm($usuario, true)) {
+                                $usuario->setSenha(md5($usuario->getSenha()));
+                                $usuarioDAO = new UsuarioDAO();
 
-                            if ($usuarioDAO->update($usuario)) {
-                                $this->addMensagemSessaoSucesso("Usuario alterado com sucesso!");
-                                $this->redirect("usuario/");
+                                if ($usuarioDAO->update($usuario)) {
+                                    $this->addMensagemSessaoSucesso("Usuario alterado com sucesso!");
+                                    $this->redirect("usuario/");
+                                }else{
+                                    $this->addMensagemErro("Não foi possível alterar o usuário");
+                                     $this->usuario = $usuario;
+                                }
                             }else{
-                                $this->addMensagemErro("Não foi possível alterar o usuário");
-                                 $this->usuario = $usuario;
+                                $this->usuario = $usuario;
                             }
                         }else{
-                            $this->usuario = $usuario;
+                            $this->addMensagemErro("Não é possível alterar o nome de usuário");
+                            $this->usuario = $usuarios[0];
                         }
                     } else {
                         $this->usuario = $usuarios[0];
