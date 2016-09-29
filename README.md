@@ -1,2 +1,7 @@
-# vcv
-Projeto de Programaçao WEB 2
+VCV - Agência de Viagens
+
+Universidade do Vale do Paraíba
+Engenharia da Computação, 6º Semestre
+
+Argel Júnior Gonçalves - 01410086
+Rafael Magno Costa - 01410721
