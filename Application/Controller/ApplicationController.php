@@ -111,6 +111,7 @@ abstract class ApplicationController {
         $auth = new Auth();
 
         if (!$auth->isLogged()) {
+
             $this->addMensagemSessaoInfo("Você precisa estar logado para acessar a página!");
             $this->redirect("login/");
         }
