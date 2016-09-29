@@ -3,31 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/vcv/portal/usuario/index.php</file>
-            <file>file:/var/www/vcv/portal/dashboard/index.php</file>
-            <file>file:/var/www/vcv/portal/usuario/deletar.php</file>
-            <file>file:/var/www/vcv/portal/pacote/index.php</file>
-            <file>file:/var/www/vcv/Application/Model/DAO/AbstractDAO.php</file>
-            <file>file:/var/www/vcv/Application/Config/Config.php</file>
-            <file>file:/var/www/vcv/Application/Model/DAO/UsuarioDAO.php</file>
-            <file>file:/var/www/vcv/portal/usuario/alterar.php</file>
-            <file>file:/var/www/vcv/Application/View/cliente/index.phtml</file>
-            <file>file:/var/www/vcv/Application/Controller/DashboardController.php</file>
-            <file>file:/var/www/vcv/Application/Model/Usuario.php</file>
-            <file>file:/var/www/vcv/portal/usuario/cadastrar.php</file>
-            <file>file:/var/www/vcv/Application/View/usuario/index.phtml</file>
-            <file>file:/var/www/vcv/portal/pacote/cadastrar.php</file>
-            <file>file:/var/www/vcv/Application/View/dashboard/index.phtml</file>
-            <file>file:/var/www/vcv/Application/View/layout/_header.phtml</file>
-            <file>file:/var/www/vcv/Application/View/layout/_footer.phtml</file>
-            <file>file:/var/www/vcv/Application/View/login/index.phtml</file>
-            <file>file:/var/www/vcv/Application/Controller/ClienteController.php</file>
-            <file>file:/var/www/vcv/portal/pacote/deletar.php</file>
-            <file>file:/var/www/vcv/Application/Controller/LoginController.php</file>
+            <file>file:/var/www/vcv/Application/View/pacote/index.phtml</file>
+            <file>file:/var/www/vcv/Application/Model/Auth.php</file>
+            <file>file:/var/www/vcv/portal/res/js/form.js</file>
             <file>file:/var/www/vcv/Application/Controller/ApplicationController.php</file>
-            <file>file:/var/www/vcv/portal/pacote/alterar.php</file>
-            <file>file:/var/www/vcv/Application/Controller/UsuarioController.php</file>
-            <file>file:/var/www/vcv/Application/Controller/PacoteController.php</file>
+            <file>file:/var/www/vcv/Application/View/layout/_footer.phtml</file>
+            <file>file:/var/www/vcv/Application/View/layout/_header.phtml</file>
+            <file>file:/var/www/vcv/Application/View/pacote/deletar.phtml</file>
+            <file>file:/var/www/vcv/Application/View/login/index.phtml</file>
         </group>
     </open-files>
 </project-private>

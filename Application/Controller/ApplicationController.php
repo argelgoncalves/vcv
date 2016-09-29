@@ -246,6 +246,13 @@ abstract class ApplicationController {
     public function displayHeader() {
         include LAYOUT_PATH . "_header.phtml";
     }
+    
+    /**
+     * Inclui e exibe o arquivo de template da página
+     */
+    public function displayContent($template) {
+        include TEMPLATE_PATH . $template . ".phtml";
+    }
 
     /**
      * Inclui e exibe o arquivo de rodapé do layout padrão da
@@ -256,28 +263,21 @@ abstract class ApplicationController {
     }
 
     /**
-     * Inclui e exibe o arquivo de template da página
-     */
-    public function displayContent($template) {
-        include TEMPLATE_PATH . $template . ".phtml";
-    }
-
-    /**
      * Retorna o caminho absoluto da aplicação no servidor
-     * @param string $destino Caminho da página
+     * @param string $dest Caminho da página
      * @return string
      */
-    public function generateURL($destino) {
-        return PAGE_URL . $destino;
+    public function generateURL($dest) {
+        return PAGE_URL . $dest;
     }
 
     /**
      * Retorna o caminho absoluto do diretório de resources da aplicação
-     * @param string $destino Caminho da página
+     * @param string $dest Caminho da página
      * @return string
      */
-    public function generateURLResouce($destino) {
-        return RESOURCE_URL . $destino;
+    public function generateURLResouce($dest) {
+        return RESOURCE_URL . $dest;
     }
 
     /**
