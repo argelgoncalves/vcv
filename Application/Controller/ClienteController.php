@@ -57,7 +57,7 @@ class ClienteController extends ApplicationController {
                     if ($this->isPost()) {
 
                         $cliente = $this->getClienteFromForm();
-                        
+                        $cliente->setId($id);
                         if($cliente->getCpf() == $clientes[0]->getCpf()){
                         
                             if($cliente->getEmail() == $clientes[0]->getEmail() &&
