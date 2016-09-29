@@ -9,7 +9,7 @@ namespace Application\Helper;
 class Mascara {
     
     public static function removerMascaraCPF($cpf){
-        return ereg_replace('[^0-9]', '', $cpf);
+        return preg_replace('/[^0-9]/i', '', $cpf);
     }
     
     public static function formatDataUSA($data){
@@ -25,12 +25,13 @@ class Mascara {
     }
     
     public static function formatDataPTBR($data){
+        if($data == ""){
+            return "";
+        }
         return date('d/m/Y',strtotime($data));
     }
     
     public static function mask($mask,$str){
-
-        $str = str_replace(" ","",$str);
 
         for($i=0;$i<strlen($str);$i++){
             $mask[strpos($mask,"#")] = $str[$i];

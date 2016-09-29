@@ -34,8 +34,8 @@ class PacoteDAO extends AbstractDAO {
                     . $pacote->getValor()
                     . ");";
 
-            if (mysql_query($sql)) {
-                $ultimoId = mysql_insert_id();
+            if (mysqli_query($bd->getConexao(), $sql)) {
+                $ultimoId = mysqli_insert_id($bd->getConexao());
             }
         }
 
@@ -58,7 +58,7 @@ class PacoteDAO extends AbstractDAO {
                     . self::VALOR . " = " . $pacote->getValor() . ""
                     . " WHERE " . self::ID . " = " . $pacote->getID();
 
-            $status = mysql_query($sql);
+            $status = mysqli_query($bd->getConexao(), $sql);
         }
 
         $bd->desconectar();

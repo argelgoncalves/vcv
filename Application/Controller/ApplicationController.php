@@ -65,7 +65,7 @@ abstract class ApplicationController {
 
     /**
      * Verificado se um formulário foi enviado à pagina
-     * @return boolean
+     * @return bool
      */
     public function isPost() {
         return count($this->getForm()) > 0;
@@ -88,7 +88,7 @@ abstract class ApplicationController {
     /**
      * Verifica se existe um indice enviado pela URL com o método GET
      * @param string $index índice a ser testado
-     * @return boolean
+     * @return bool
      */
     public function hasIndex($index) {
         return isset($_GET[$index]);
@@ -110,9 +110,18 @@ abstract class ApplicationController {
     public function validarSessao() {
         $auth = new Auth();
 
-        if (!$auth->isLogado()) {
+        if (!$auth->isLogged()) {
+            $this->addMensagemSessaoInfo("Você precisa estar logado para acessar a página!");
             $this->redirect("login/");
         }
+    }
+    
+    /**
+     * Retorna o nome do usuário autenticado na sessão
+     */
+    public function getUsername() {
+        $auth = new Auth();
+        return $auth->getUsername();
     }
 
     /**
@@ -207,7 +216,7 @@ abstract class ApplicationController {
     /**
      * Verifica se existem mensagens de erro registradas
      * na aplicação
-     * @return boolean hasMensagensErro 
+     * @return bool hasMensagensErro 
      */
     public function hasMensagensErro() {
         return count($this->mensagensErro) > 0;
@@ -216,7 +225,7 @@ abstract class ApplicationController {
     /**
      * Verifica se existem mensagens de informação registradas
      * na aplicação
-     * @return boolean
+     * @return bool
      */
     public function hasMensagensInfo() {
         return count($this->mensagensInfo) > 0;
@@ -225,7 +234,7 @@ abstract class ApplicationController {
     /**
      * Verifica se existem mensagens de sucesso registradas
      * na aplicação
-     * @return boolean
+     * @return bool
      */
     public function hasMensagensSucesso() {
         return count($this->mensagensSucesso) > 0;
@@ -281,10 +290,22 @@ abstract class ApplicationController {
         return RESOURCE_URL . "images/" . $filename;
     }
 
-    public function isImageUploaded($name) {
-        return isset($_FILES[$name]);
+    
+    /**
+     * Verifica se foi carregado uma imagem pelo formulário
+     * @param string $inputName name do input do formulário
+     * @return bool
+     */
+    public function isImageUploaded($inputName) {
+        return isset($_FILES[$inputName]);
     }
 
+    /**
+     * Copia um arquivo carregado pelo formulário para a pasta de imagens
+     * @param type $inputName name do input do formulário
+     * @return boolean|string o nome do arquivo criado ou false se não copiar o arquivo
+     *                        
+     */
     public function uploadImage($inputName) {
         date_default_timezone_set("Brazil/East");
         $ext = strtolower(substr($_FILES[$inputName]['name'], -4));

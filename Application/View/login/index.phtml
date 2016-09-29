@@ -13,8 +13,8 @@
 
     <link href="<?=$this->generateURLResouce('bower_components/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?=$this->generateURLResouce('bower_components/metisMenu/dist/metisMenu.min.css')?>" rel="stylesheet">
-    <link href="<?=$this->generateURLResouce('res/dist/css/sb-admin-2.css')?>" rel="stylesheet">
-    <link href="<?=$this->generateURLResouce('res/bower_components/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" type="text/css">
+    <link href="<?=$this->generateURLResouce('dist/css/sb-admin-2.css')?>" rel="stylesheet">
+    <link href="<?=$this->generateURLResouce('bower_components/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" type="text/css">
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -53,14 +53,14 @@
                             <?php endforeach;?>
                         <?php endif;?>
                                 
-                        <form role="form" action="<?=$this->generateURL('login/index.php')?>" method="POST">
+                        <form id="form-login" role="form" action="<?=$this->generateURL('login/index.php')?>" method="POST">
                             <fieldset>
                                 
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Login" name="login" type="text" autofocus>
+                                    <input class="form-control" id="login" placeholder="Login" name="login" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+                                    <input class="form-control" id="senha" placeholder="Senha" name="senha" type="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type = "submit" class="btn btn-lg btn-success" value="Login"/>
@@ -76,6 +76,8 @@
     <script src="<?=$this->generateURLResouce('bower_components/bootstrap/dist/js/bootstrap.min.js')?>"></script>
     <script src="<?=$this->generateURLResouce('bower_components/metisMenu/dist/metisMenu.min.js')?>"></script>
     <script src="<?=$this->generateURLResouce('dist/js/sb-admin-2.js')?>"></script>
+    <script src="<?=$this->generateURLResouce('js/mask.js')?>"></script>
+    <script src="<?=$this->generateURLResouce('js/form.js')?>"></script>
 
 </body>
 

@@ -18,7 +18,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
-                            <form class='form-horizontal' enctype="multipart/form-data" method="POST" action="<?= $this->generateURL('pacote/alterar.php?id='.$this->pacote->getId()) ?>">
+                            <form id="form-pacote" class='form-horizontal' enctype="multipart/form-data" method="POST" action="<?= $this->generateURL('pacote/alterar.php?id='.$this->pacote->getId()) ?>">
 
                                 <?php if ($this->hasMensagensErro()): ?>
                                     <?php foreach ($this->getMensagensErro() as $message): ?>
@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <label for='nome' class="col-md-3 control-label">Nome</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="nome" name="nome" type="text" value="<?= $this->pacote->getNome() ?>">
+                                        <input class="form-control" readonly id="nome" name="nome" type="text" value="<?= $this->pacote->getNome() ?>">
                                     </div>
                                 </div>
 
@@ -50,14 +50,16 @@
                                     <label for='descricao' class="col-md-3 control-label">Descricao</label>
                                     <div class='col-md-9 col-sm-12'>
                                         <textarea class="form-control" id="descricao" name="descricao" type="text"><?= $this->pacote->getDescricao()?></textarea>
+                                        <p class="help-block">Descrição deve ter pelo menos 10 caracteres!</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
 
-                                    <label for='valor' class="col-md-3 control-label">Valor</label>
+                                    <label for='valor' class="col-md-3 control-label">Preço</label>
                                     <div class='col-md-9 col-sm-12'>
-                                        <input class="form-control" id="valor" name="valor" type="text" value="<?= $this->pacote->getValor() ?>">
+                                        <input class="form-control" id="preco" name="valor" type="text" value="R$ <?= number_format($this->pacote->getValor(), 2) ?>">
+                                        <p class="help-block">Preço deve ser um valor válido!</p>
                                     </div>
                                 </div>
                                       
@@ -67,6 +69,7 @@
                                     <label for="foto" class="col-md-3 control-label">Foto</label>
                                     <div class='col-md-9 col-sm-12'>
                                         <input type="file" id="foto" name="foto" accept="image/*">
+                                        <p class="help-block" id="error-nome">Foto deve ser um arquivo do tipo imagem, para manter a atual, não selecionar nenhum arquivo!</p>
                                     </div>
                                 
                                 </div>

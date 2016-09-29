@@ -15,18 +15,27 @@ class Auth {
     public function __construct() {
         if (isset($_SESSION[$this->nomeSessao])) {
             $auth = $_SESSION[$this->nomeSessao];
-            $username = $auth['username'];
+            $this->username = $auth['username'];
         }
     }
 
-    public function isLogado() {
+    public function isLogged() {
         return isset($_SESSION[$this->nomeSessao]);
     }
+    
+    public function getUsername(){
+        
+        if($this->username != null){
+            return $this->username;
+        }
+        
+        return "Convidado";
+    }
 
-    public function isValidLogin($usuario) {
+    public function authenticate($usuario) {
 
         $usuarioDAO = new UsuarioDAO();
-        if ($usuarioDAO->exists($usuario)) {
+        if ($usuarioDAO->authenticate($usuario)) {
             $_SESSION[$this->nomeSessao] = array(
                 "username" => $usuario->getNome()
             );

@@ -32,9 +32,7 @@
             <div class="clearfix"/><br /></div>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-users fa-fw"></i>&nbsp;Usuarios
-
-
+                <i class="fa fa-cogs fa-fw"></i>&nbsp;Usuarios
 
             </div>
             <!-- /.panel-heading -->
@@ -61,7 +59,7 @@
                                                 <i class ="fa fa-edit"></i>&nbsp;Editar
                                             </a>
 
-                                            <a href ="<?= $this->generateURL('usuario/deletar.php?id=' . $usuario->getId()) ?>" class ="btn btn-danger">
+                                            <a href ="<?= $this->generateURL('usuario/deletar.php?id=' . $usuario->getId()) ?>" class ="btn btn-danger delete" data="<?=$usuario->getNome()?>">
                                                 <i class ="fa fa-trash"></i>&nbsp;Apagar
                                             </a>
                                         </td>

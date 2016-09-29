@@ -18,7 +18,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
-                            <form class='form-horizontal' method="POST" action="<?= $this->generateURL('usuario/cadastrar.php') ?>">
+                            <form id="form-usuario" class='form-horizontal' method="POST" action="<?= $this->generateURL('usuario/cadastrar.php') ?>">
 
                                 <?php if ($this->hasMensagensErro()): ?>
                                     <?php foreach ($this->getMensagensErro() as $message): ?>
@@ -42,6 +42,7 @@
                                     <label for='nome' class="col-md-3 control-label">Nome de Usuário</label>
                                     <div class='col-md-9 col-sm-12'>
                                         <input class="form-control" id="nome" name="nome" type="text" value="<?= $this->usuario->getNome() ?>">
+                                        <p class="help-block">Nome deve ter pelo menos 3 caracteres!</p>
                                     </div>
                                 </div>
 
@@ -50,6 +51,7 @@
                                     <label for='senha' class="col-md-3 control-label">Senha</label>
                                     <div class='col-md-9 col-sm-12'>
                                         <input class="form-control" id="senha" name="senha" type="password">
+                                        <p class="help-block">Senha deve ter pelo menos 6 caracteres!</p>
                                     </div>
                                 </div>
 

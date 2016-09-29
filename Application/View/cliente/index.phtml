@@ -69,7 +69,7 @@
                                                 <i class ="fa fa-edit"></i>&nbsp;Editar
                                             </a>
 
-                                            <a href ="<?= $this->generateURL('cliente/deletar.php?id=' . $cliente->getId()) ?>" class ="btn btn-danger">
+                                            <a href ="<?= $this->generateURL('cliente/deletar.php?id=' . $cliente->getId()) ?>" class ="btn btn-danger delete" data="<?=$cliente->getNome()?>">
                                                 <i class ="fa fa-trash"></i>&nbsp;Apagar
                                             </a>
                                         </td>
